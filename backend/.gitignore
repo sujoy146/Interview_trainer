@@ -1,0 +1,21 @@
+# Ignore Python cache and virtual environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+env/
+venv/
+
+# Ignore environment config
+.env
+
+# VS Code settings (optional)
+.vscode/
+
+# Flask logs
+instance/
+*.log
+
+# Node modules if placed here by mistake
+node_modules/
