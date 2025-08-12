@@ -1,5 +1,3 @@
-
-````markdown
 # Interview Trainer Agent – AI Powered by IBM Granite
 
 ## Overview
@@ -37,29 +35,7 @@ An AI-driven Interview Trainer that generates personalized interview questions a
 2. Install Python dependencies:
    ```bash
    pip install -r requirements.txt
-````
 
-3. Create a `.env` file in `backend/` with:
-
-   ```
-   IBM_API_KEY=your_ibm_api_key
-   IBM_PROJECT_ID=your_project_id
-   IBM_URL=https://us-south.ml.cloud.ibm.com
-   ```
-4. Download spaCy language model:
-
-   ```bash
-   python -m spacy download en_core_web_sm
-   ```
-5. Run the backend server:
-
-   ```bash
-   python app.py
-   ```
-
-   It listens on `0.0.0.0:8080` by default.
-
----
 
 ### Frontend Setup
 
