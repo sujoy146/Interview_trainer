@@ -1,134 +1,162 @@
-Interview Trainer Agent – AI Powered by IBM Granite
-Overview
-This project is an AI-driven Interview Trainer Agent built with a React frontend and a Python Flask backend, using IBM Granite Foundation Models deployed on IBM Cloud Lite. By inputting a resume, job title, or job description, users receive tailored interview questions as well as actionable, AI-powered feedback on their answers. The solution aims to make interview preparation highly personalized, efficient, and adaptive—helping candidates build both technical and soft skills for today’s dynamic job market.
 
-Features
-Custom Interview Generation: Get technical and behavioral questions tailored to your profile.
+````markdown
+# Interview Trainer Agent – AI Powered by IBM Granite
 
-AI-Powered Answer Feedback: Receive a score and improvement suggestions for every answer.
+## Overview
+An AI-driven Interview Trainer that generates personalized interview questions and provides real-time, actionable feedback on your answers. Powered by IBM Granite Foundation Models on IBM Cloud Lite, this tool helps candidates sharpen both technical and behavioral skills based on their resume or job description inputs.
 
-Resume Parsing: Automatic skill extraction from provided resumes.
+---
 
-Real-Time Evaluation: Experience realistic mock interviews instantly.
+## Features
+- **Custom Interview Questions:** Tailored technical and behavioral questions generated from your resume or job title.
+- **AI-Powered Feedback:** Detailed scoring and improvement suggestions on each answer.
+- **Resume Parsing:** Automated skill extraction using spaCy.
+- **Real-Time Mock Interviews:** Instant interaction with AI-driven interview scenarios.
+- **Cloud-Ready & Secure:** Built on IBM Cloud Lite, with environment variable-based configuration for safe credential management.
 
-Cloud-Ready and Secure: Powered by IBM Granite and IBM Cloud Lite, with support for environment variables.
+---
 
-How It Works
-Frontend (React): Users enter resume or job details and interact with generated interview content via a modern web UI.
+## How It Works
+- **Frontend (React):** User-friendly UI for submitting resumes/job info and answering questions.
+- **Backend (Flask):** API endpoints handle text parsing, question generation, and answer evaluation.
+- **IBM Granite (Cloud):** Leverages advanced AI models for natural language understanding and feedback generation.
 
-Backend (Flask): Handles requests, parses text, generates questions, and evaluates answers.
+---
 
-IBM Granite (Cloud): Provides advanced language model capabilities for question generation and answer assessment.
+## Setup Instructions
 
-Setup Instructions
-Prerequisites
-Python 3.8+
+### Prerequisites
+- Python 3.8+
+- Node.js (for frontend)
+- IBM Cloud Lite account with Granite credentials
 
-Node.js (for React frontend)
+---
 
-IBM Cloud Lite account + IBM Granite credentials
+### Backend Setup
+1. Clone the repo and navigate to `backend/`.
+2. Install Python dependencies:
+   ```bash
+   pip install -r requirements.txt
+````
 
-Backend Setup
-Clone the repo and cd into the backend folder.
+3. Create a `.env` file in `backend/` with:
 
-Install dependencies:
+   ```
+   IBM_API_KEY=your_ibm_api_key
+   IBM_PROJECT_ID=your_project_id
+   IBM_URL=https://us-south.ml.cloud.ibm.com
+   ```
+4. Download spaCy language model:
 
-text
-pip install -r requirements.txt
-Configure environment:
+   ```bash
+   python -m spacy download en_core_web_sm
+   ```
+5. Run the backend server:
 
-Create a .env file in backend/:
+   ```bash
+   python app.py
+   ```
 
-text
-IBM_API_KEY=your_ibm_api_key
-IBM_PROJECT_ID=your_project_id
-IBM_URL=https://us-south.ml.cloud.ibm.com
-Download spaCy model:
+   It listens on `0.0.0.0:8080` by default.
 
-text
-python -m spacy download en_core_web_sm
-Run the Flask backend:
+---
 
-text
-python app.py
-Defaults to 0.0.0.0:8080.
+### Frontend Setup
 
-Frontend Setup
-Navigate to frontend directory (or root if you have a single codebase).
+1. Navigate to `frontend/`.
+2. Install dependencies:
 
-Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create a `.env` file with:
 
-text
-npm install
-Configure environment:
+   ```
+   REACT_APP_API_URL=http://localhost:8080
+   ```
+4. Start the React app:
 
-Create a .env file in your frontend project:
+   ```bash
+   npm start
+   ```
+5. Open your browser at `http://localhost:3000`.
 
-text
-REACT_APP_API_URL=http://localhost:8080
-Start the React app:
+---
 
-text
-npm start
-Access in browser: http://localhost:3000
+## Project Structure
 
-File Structure
-text
+```
 .
 ├── backend/
-│   ├── app.py                # Flask API endpoints
+│   ├── app.py                 # Flask API endpoints
 │   ├── requirements.txt
-│   ├── resume_parser.py      # spaCy skill extraction
+│   ├── resume_parser.py       # spaCy-based skill extraction
 │   ├── utils/
-│   │   └── ibm_granite_api.py # IBM Granite model logic
-│   ├── .env                  # Backend environment variables
+│   │   └── ibm_granite_api.py # IBM Granite API integration
+│   ├── .env                   # Backend environment variables
 │   └── ...
 ├── frontend/
-│   ├── App.js                # React UI main logic
+│   ├── App.js                 # React main component
 │   ├── App.css
-│   ├── .env                  # Frontend environment variables
+│   ├── .env                   # Frontend environment variables
 │   └── ...
 └── README.md
-Technologies Used
-Frontend: React, JavaScript
+```
 
-Backend: Flask, Flask-CORS, spaCy
+---
 
-AI: IBM watsonx.ai (Granite Foundation Models)
+## Technologies Used
 
-Deployment: IBM Cloud Lite
+* **Frontend:** React, JavaScript
+* **Backend:** Flask, Flask-CORS, spaCy
+* **AI:** IBM watsonx.ai Granite Foundation Models
+* **Deployment:** IBM Cloud Lite
 
-Example Usage
-User enters resume/job info.
+---
 
-System displays three personalized interview questions.
+## Usage Flow
 
-User answers each; system evaluates and gives feedback.
+1. User inputs a resume or job description.
+2. System extracts skills and generates tailored interview questions.
+3. User answers questions through the frontend.
+4. Backend evaluates answers using IBM Granite AI and returns feedback.
+5. User receives a summary of performance and suggestions for improvement.
 
-Final feedback summary provided.
+---
 
-Security Notes
-Keep your .env files out of version control (they’re in .gitignore).
+## Security Best Practices
 
-Never expose IBM API credentials publicly.
+* Keep `.env` files out of version control (already in `.gitignore`).
+* Never expose IBM API keys publicly.
+* For production, run behind a robust WSGI server and enforce strict CORS policies.
 
-For production deployment, use a WSGI server and secure CORS policy.
+---
 
-Future Improvements
-Integrate voice-based mock interviews and analytics dashboard.
+## Future Improvements
 
-Support localization for multiple languages.
+* Voice-based mock interview support.
+* Analytics dashboard to track user progress.
+* Localization for multiple languages.
+* Company-specific question augmentation.
 
-Augment questions with company-specific databases.
+---
 
-License
-This project is for demonstration and educational purposes. See LICENSE for details.
+## License
 
-Credits
-IBM watsonx.ai and Granite team for cutting-edge AI models.
+This project is for demonstration and educational use only. See LICENSE file for details.
 
-spaCy for robust NLP.
+---
 
-Open source communities for foundational libraries and tools.
+## Credits
 
-Feel free to fork, contribute, and adapt for your own use!
+* IBM watsonx.ai and Granite Foundation Models for AI capabilities.
+* spaCy for NLP skill extraction.
+* Open source community for foundational tools.
+
+---
+
+Fork it, improve it, and make it yours. No excuses.
+
+```
+
+
