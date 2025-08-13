@@ -59,6 +59,7 @@ def evaluate():
         print(f"evaluate() error: {e}")
         return jsonify({"error": "Server error during evaluation"}), 500
 
+
 if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 8080))
