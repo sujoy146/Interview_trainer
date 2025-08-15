@@ -25,7 +25,7 @@ An AI-driven Interview Trainer that generates personalized interview questions a
 
 ### Prerequisites
 - Python 3.8+
-- Node.js (for frontend)
+- React.js (for frontend)
 - IBM Cloud Lite account with Granite credentials
 
 ---
@@ -117,11 +117,7 @@ An AI-driven Interview Trainer that generates personalized interview questions a
 
 ---
 
-## License
 
-This project is for demonstration and educational use only. See LICENSE file for details.
-
----
 
 ## Credits
 
@@ -133,6 +129,5 @@ This project is for demonstration and educational use only. See LICENSE file for
 
 Fork it, improve it, and make it yours. No excuses.
 
-```
 
 
